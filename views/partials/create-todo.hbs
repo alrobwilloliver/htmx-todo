@@ -1,0 +1,11 @@
+<form 
+    hx-post="/todos"
+    hx-target="#todos-list"
+    hx-swap="innerHTML"
+    hx-on::after-request=" if(event.detail.successful) this.reset()"
+    hx-include="[name='category']:checked"
+>
+    <label for="title">Todo</label>
+    <input type="text" name="title" id="title" required="true" minlength="3">
+    <button class="button" type="submit">Add Todo</button>
+</form>

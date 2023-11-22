@@ -1,0 +1,23 @@
+<div id="item-{{this.id}}" class="flex align-center">
+    <p class="text-format">{{this.task}}</p>
+    <!-- Dropdown Toggle -->
+    <img src="/dropdown.png" onclick="document.getElementById('dropdown-{{this.subTask.id}}').style.display = document.getElementById('dropdown-{{this.subTask.id}}').style.display === 'block' ? 'none' : 'block';"/>
+
+    <!-- Dropdown Container -->
+    <div id="dropdown-{{this.subTask.id}}" class="dropdown-content htmx-indicator">
+        {{!-- {{#each this.subTask}} --}}
+        <p>Hi</p>
+        {{!-- {{/each}} --}}
+    </div>
+    <a
+        tabindex="0"
+        hx-patch="/todos/{{this.id}}/complete"
+        hx-target="#item-{{this.id}}"
+        hx-swap="outerHTML"
+        onkeypress="if(event.keyCode==13){this.click();}"
+    >
+        <img 
+            src={{#if this.completed}} "/complete.png" {{^}} "/incomplete.png" {{/if}}
+        />
+    </a>
+</div>

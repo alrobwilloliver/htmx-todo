@@ -1,0 +1,58 @@
+<section id="parent">
+    <div class="child">
+        <br>
+        <h1 class="center-text">Alan - Todo List</h1>
+        <br>
+
+        <fieldset class="multiswitch">
+            <legend>Category</legend>
+
+            <div class="slide-container">
+                <input 
+                    type="radio"
+                    name="category"
+                    id="category1"
+                    value="personal"
+                    hx-get="/todos"
+                    hx-trigger="click"
+                    hx-target="#todos-list"
+                    hx-swap="outerHTML"
+                    checked
+                >
+                <label for="category1">Personal</label>
+                <input
+                    type="radio"
+                    name="category"
+                    id="category2"
+                    value="professional"
+                    hx-get="/todos"
+                    hx-trigger="click"
+                    hx-target="#todos-list"
+                    hx-swap="outerHTML"
+                >
+                <label for="category2">Professional</label>
+                <a class="slide" aria-hidden="true"></a>
+            </div>
+        </fieldset>
+
+        <br>
+
+        <div class="flex align-center">
+            <button
+                class="margin-bottom button orange"
+                hx-delete="/todos"
+                hx-target="#todos-list"
+                hx-swap="outerHTML"
+                hx-include="[name='category']:checked"
+            >
+                Clear Completed Tasks
+            </button>
+        </div>
+
+        {{> create-todo }}
+
+        <br>
+
+        {{> todos-list }}
+    </div>
+</section>
